@@ -1,5 +1,6 @@
 package com.example.gd8_accelerometer_d_10659
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         setUpSensorStuff()
     }
 
-    fun setUpSensorStuff(){
+    private fun setUpSensorStuff(){
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
 // Specify the sensor you want to listen to
         sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)?.also{ accelerometer ->
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onSensorChanged(event: SensorEvent?) {
         // Checks for the sensor we have registered
         if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        return
+
     }
 
     override fun onDestroy() {
